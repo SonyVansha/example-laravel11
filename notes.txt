@@ -1,0 +1,71 @@
+Di ubah :
+routes
+database
+app
+
+
+php artisan make:component Layout
+
+# Buat table di database
+php artisan migrate
+
+# buat table migration
+php artisan make:migration
+
+#Buat data by CLI
+php artisan tinker
+
+```
+> App\Models\Post::create([                                                   
+'title' => 'Articel 2',                                                     
+'author' => 'Sony',                                                         
+'slug' => 'articel-2',
+'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem d
+olore ipsum aperiam? Corrupti reiciendis fugit architecto ipsa quaerat id beat
+ae. Atque, ipsum deleniti fugit dolore ab nisi dolorum nihil obcaecati?'      
+]);
+```
+
+# Buat model dan migrate
+php artisan make:model Post -m
+
+# Buat data untuk table di factory -> source https://fakerphp.org/
+App\Models\User::factory(2)->unverified()->create(); 
+App\Models\Post::factory(10)->create(); 
+
+# Buat post dengan nama user tetapi dengan 5 user pada 30 post
+App\Models\Post::factory(30)->recycle(User::factory(5)->create())->create();
+
+# Pastikan nama migrate berurutan karena terdapat forent key saat menggunakan mysql dan berbeda dari sqlite
+
+
+# Optimasi jika terdapat masalah pada factory
+composer dumpautoload
+php artisan optimize:clear
+
+# Buat post beserta category
+App\Models\Post::factory(30)->recycle([Category::factory(3)->create(), User::factory(5)->create()])->create();   
+
+# Membuat example seeding agar menambahkan data sesuai seeding
+php artisan db:seed
+
+# Refress table isi dan menambahkan data sesuai seeding
+php artisan migrate:fresh --seed
+
+# membuat file seeding
+php artisan make:seeder
+
+# Melakukan Debuging quary | Not use in production | recommended for development
+composer require barryvdh/laravel-debugbar --dev
+
+# Eager loading |lazy loading = hanya loading jika dibutuhkan
+
+# supaya bisa di edit secara public untuk bisa di edit | di pindah kan dari folder vendor
+php artisan vendor:publish
+
+
+Tools:
+- laravel
+- TailWind
+- Flowbite
+- Mysql

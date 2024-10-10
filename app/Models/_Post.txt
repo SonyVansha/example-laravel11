@@ -1,0 +1,18 @@
+<?php
+
+// Namespace berada di app/Models pada laravel
+namespace App\Models;
+
+
+use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Support\Arr;
+
+// Data Post
+class Post extends Model {
+    // memastikan menggunakan table posts jika nama table tidak sesuai
+    // protected $table = 'posts';
+
+    protected $fillable = ['title', 'slug', 'author', 'body'];
+}
+
+?>
